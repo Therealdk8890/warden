@@ -1,0 +1,16 @@
+[project]
+name = "warden"
+version = "0.1.0"
+description = "Local, model-agnostic flight recorder for AI coding agents"
+requires-python = ">=3.10"
+dependencies = []            # Phase 0 is stdlib-only (sqlite3 + FTS5)
+
+[project.scripts]
+warden = "warden.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["warden"]

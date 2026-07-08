@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Zero-install launcher: run Warden straight from the source tree.
+# `pip install -e .` also installs a `warden` console script; this shim lets the
+# tool work immediately without an install step, including via a symlink on PATH.
+src="${BASH_SOURCE[0]}"
+while [ -L "$src" ]; do                      # resolve symlinks (e.g. ~/.local/bin/warden)
+  dir="$(cd -P "$(dirname "$src")" >/dev/null 2>&1 && pwd)"
+  src="$(readlink "$src")"
+  [[ $src != /* ]] && src="$dir/$src"
+done
+root="$(cd -P "$(dirname "$src")/.." >/dev/null 2>&1 && pwd)"
+export PYTHONPATH="$root${PYTHONPATH:+:$PYTHONPATH}"
+exec python3 -m warden "$@"

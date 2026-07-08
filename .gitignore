@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# Warden's local store lives in ~/.warden (outside the repo) and holds raw
+# prompts + tool output — never commit it, or any stray copy.
+.warden/
+*.db
+*.db-wal
+*.db-shm
+*.warden-bak
+*.warden-tmp
