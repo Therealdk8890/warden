@@ -144,7 +144,7 @@ def cmd_timeline(store: Store, args) -> int:
             mut = c(" ✎", "33") if r["mutation"] else ""
             name = r["tool_name"] or "?"
             ns = f"{r['tool_namespace']}:" if r["tool_namespace"] not in (None, "builtin") else ""
-            osz = f"  {c(f'({r['output_len']}b)','2')}" if r["output_len"] else ""
+            osz = "  " + c(f"({r['output_len']}b)", "2") if r["output_len"] else ""
             print(f"  {c(tstr,'2')} {agent} {c(ns+name,'36')}{err}{mut}  "
                   f"{_key_arg(r['input_json'])}{osz}")
     print(c(f"\n{len(rows)} events (newest {args.limit} in window).", "2"))
