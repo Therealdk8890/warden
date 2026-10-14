@@ -227,7 +227,7 @@ def cmd_stats(store: Store, args) -> int:
 
     errs = q("SELECT COUNT(*) n FROM events WHERE kind='tool_call' AND is_error=1")[0]["n"]
     files = q("SELECT COUNT(DISTINCT path) n FROM file_effects WHERE op IN "
-              "('write','edit','delete','patch')")[0]["n"]
+              "('write','edit','delete','patch','shell')")[0]["n"]
     print(c(f"\nfile paths changed  {files:>7}", "4"))
     print(c(f"tool-call errors    {errs:>7}", "4"))
     return 0
